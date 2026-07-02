@@ -42,8 +42,38 @@ def total_expenses():
     for expense in expenses:
         total += float(expense["amount"])
     print(f"Total: ${total:.2f}")
-    
-load_expenses()
-list_expenses()
-total_expenses()
-save_expenses()
+
+def main():
+    load_expenses()
+    while True:
+        print("1. Add expense")
+        print("2. View Expenses")
+        print("3. Delete expense")
+        print("4. View total")
+        print("5. Quit")
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            date = input("Enter Date (MM-DD-YYYY): ")
+            time = input("Enter Time (HH:MM): ")
+            location = input("Enter Location (City, State): ")
+            store = input("Enter Store: ")
+            amount = input("Enter $ amount: ")
+            add_expense(date, time, location, store, amount)
+            save_expenses()
+
+        elif choice == "2":
+            list_expenses()
+
+        elif choice == "3":
+            id = input("Enter a transaction ID: ")
+            delete_expense(id)
+            save_expenses()
+
+        elif choice == "4":
+            total_expenses()
+
+        elif choice == "5":
+            break
+        
+main()
