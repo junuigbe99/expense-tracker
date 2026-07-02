@@ -71,7 +71,12 @@ def main():
             list_expenses()
 
         elif choice == "3":
-            id = input("Enter a transaction ID: ")
+            while True:
+                try: 
+                    id = int(input("Enter a transaction ID: "))
+                    break
+                except ValueError:
+                    print("Invalid ID. Please enter a number")
             delete_expense(id)
             save_expenses()
 
