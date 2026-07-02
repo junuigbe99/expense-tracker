@@ -58,7 +58,12 @@ def main():
             time = input("Enter Time (HH:MM): ")
             location = input("Enter Location (City, State): ")
             store = input("Enter Store: ")
-            amount = input("Enter $ amount: ")
+            while True:
+                try:
+                    amount = float(input("Enter $ amount: "))
+                    break
+                except ValueError:
+                    print("Invalid amount. Please enter a number.")
             add_expense(date, time, location, store, amount)
             save_expenses()
 
@@ -75,5 +80,7 @@ def main():
 
         elif choice == "5":
             break
-        
+
+        else:
+            print("Invalid choice. Please enter 1-5.")       
 main()
