@@ -33,9 +33,15 @@ def load_expenses():
                 expenses.append(row)
     except FileNotFoundError:
             pass
-
+def delete_expense(id):
+    global expenses
+    expenses = [expense for expense in expenses if expense["id"] != id]
+    
 load_expenses()
-add_expense("01-15-2026", "12:00", "Columbus, Ohio", "Marshalls", 85.00)
-add_expense("07-01-2026", "03:14", "Columbus, Ohio", "Saks Fifth Avenue", 1295.00)
+add_expense("06-15-2026", "10:00", "Columbus, Ohio", "Marshalls", 85.00)
+add_expense("07-01-2026", "12:30", "Columbus, Ohio", "Saks Fifth Avenue", 1295.00)
+add_expense("07-02-2026", "03:43", "Columbus, Ohio", "Nike", 200.00)
+list_expenses()
+delete_expense(2)
 list_expenses()
 save_expenses()
