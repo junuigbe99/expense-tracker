@@ -35,13 +35,15 @@ def load_expenses():
             pass
 def delete_expense(id):
     global expenses
-    expenses = [expense for expense in expenses if expense["id"] != id]
+    expenses = [expense for expense in expenses if int(expense["id"]) != id]
+
+def total_expenses():
+    total = 0
+    for expense in expenses:
+        total += float(expense["amount"])
+    print(f"Total: ${total:.2f}")
     
 load_expenses()
-add_expense("06-15-2026", "10:00", "Columbus, Ohio", "Marshalls", 85.00)
-add_expense("07-01-2026", "12:30", "Columbus, Ohio", "Saks Fifth Avenue", 1295.00)
-add_expense("07-02-2026", "03:43", "Columbus, Ohio", "Nike", 200.00)
 list_expenses()
-delete_expense(2)
-list_expenses()
+total_expenses()
 save_expenses()
